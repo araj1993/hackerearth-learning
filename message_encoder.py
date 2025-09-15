@@ -11,10 +11,10 @@ Example:
  - Output: "oHell rldwo htis si a test"
 """
 
-def message_encoder(s = str(input("Enter a message: "))):
+def message_encoder(s = str(input("\nEnter a message: "))):
 
     encoded_message = ""
-    
+
     try:
         for pos,word in enumerate(s.split(),start=1):
             if len(word) < pos:
@@ -24,5 +24,21 @@ def message_encoder(s = str(input("Enter a message: "))):
         return encoded_message.strip()
     except Exception as e:
         return str(e)
-    
-print(message_encoder())
+
+print(f"Encoded message: {message_encoder()}")
+
+def decoder(encoded_message):
+    decoded_message = ""
+
+    try:
+        for pos, word in enumerate(encoded_message.split(), start=1):
+            if len(word) < pos:
+                decoded_message += word + " "
+            else:
+                decoded_word = word[pos:] + word[:pos]
+                decoded_message += decoded_word + " "
+        return decoded_message.strip()
+    except Exception as e:
+        return str(e)
+
+print(f"Decoded message: {decoder(message_encoder())}")
